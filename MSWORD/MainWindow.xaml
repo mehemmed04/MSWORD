@@ -1,0 +1,62 @@
+﻿<Window x:Class="MSWORD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MSWORD"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="750" Width="850">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <WrapPanel>
+                <TextBox Name="FilePathTxtb" IsEnabled="False" Margin="5,5,0,5" Width="200" Height="30"></TextBox>
+
+                <Button Name="FilePathBtn" Click="FilePathBtn_Click" Width="30" Margin="0,5,5,5" Height="30" Background="Transparent">
+                    <Image Source="Images/3point.png">
+
+                    </Image>
+                </Button>
+                <Button Name="SaveBtn" Click="SaveBtn_Click" Width="100" Margin="5" Height="30" >SAVE</Button>
+
+
+
+                <ToggleButton x:Name="Toggle2"
+                         Height="25" Width="50">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Border x:Name="B1" Background="Red"
+                                CornerRadius="10" Padding="1">
+                                <Border x:Name="B2" Background="White"
+                                    Width="{TemplateBinding Height}"
+                                    CornerRadius="20" HorizontalAlignment="Left">
+                                    <ContentPresenter/>
+                                </Border>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="B2" Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter TargetName="B1" Property="Background" Value="Blue"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                <Button Name="CutBtn" Click="CutBtn_Click" Width="100" Margin="5" Height="30" >CUT</Button>
+                <Button Name="CopyBtn" Click="CopyBtn_Click" Width="100" Margin="5" Height="30" >COPY</Button>
+                <Button Name="PasteBtn" Click="PasteBtn_Click"  Width="100" Margin="5" Height="30" >PASTE</Button>
+                <Button Name="SelectAllBtn" Click="SelectAllBtn_Click" Width="100" Margin="5" Height="30" >SELECT ALL</Button>
+            </WrapPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <RichTextBox Name="contentTxtb" FontSize="16" ></RichTextBox>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Window>
