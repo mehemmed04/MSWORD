@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -69,6 +71,16 @@ namespace MSWORD
         private void SelectAllBtn_Click(object sender, RoutedEventArgs e)
         {
             contentTxtb.SelectAll();
+        }
+
+        private void contentTxtb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Toggle2.IsChecked==true)
+            {
+                System.Windows.Automation.Peers.ButtonAutomationPeer peer = new System.Windows.Automation.Peers.ButtonAutomationPeer(SaveBtn);
+                IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                invokeProv.Invoke();
+            }
         }
     }
 }

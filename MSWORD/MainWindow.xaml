@@ -25,7 +25,7 @@
 
 
 
-                <ToggleButton x:Name="Toggle2"
+                <ToggleButton Name="Toggle2"
                          Height="25" Width="50">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="ToggleButton">
@@ -46,6 +46,8 @@
                         </ControlTemplate>
                     </ToggleButton.Template>
                 </ToggleButton>
+                
+                
                 <Button Name="CutBtn" Click="CutBtn_Click" Width="100" Margin="5" Height="30" >CUT</Button>
                 <Button Name="CopyBtn" Click="CopyBtn_Click" Width="100" Margin="5" Height="30" >COPY</Button>
                 <Button Name="PasteBtn" Click="PasteBtn_Click"  Width="100" Margin="5" Height="30" >PASTE</Button>
@@ -54,7 +56,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <ScrollViewer>
-                <RichTextBox Name="contentTxtb" FontSize="16" ></RichTextBox>
+                <RichTextBox TextChanged="contentTxtb_TextChanged"  Name="contentTxtb" FontSize="16" ></RichTextBox>
             </ScrollViewer>
         </Grid>
 
